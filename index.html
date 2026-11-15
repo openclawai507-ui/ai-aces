@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Aces — AI consulting that deals you the winning hand</title>
+<meta name="description" content="AI Aces is an AI consulting firm. We build AI agents, automate the busywork and train your team, so your business scales without gambling on AI.">
+<meta property="og:title" content="AI Aces — Stop gambling on AI">
+<meta property="og:description" content="AI agents, workforce efficiency, automation and strategy. We deal you the winning hand.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#07090c">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<!-- ============================================================
+     EDIT ME — your real contact details go here (placeholders now)
+     ============================================================ -->
+<script>
+  window.AIACES = {
+    email:     "hello@example.com",   // where the contact form sends enquiries
+    linkedin:  "#",                   // full LinkedIn URL
+    instagram: "#",                   // full Instagram URL
+    x:         "#"                    // full X / Twitter URL
+  };
+  // Shows the preloader only when scripts are running; failsafe if they never load.
+  document.documentElement.classList.add('js');
+  setTimeout(function(){ if(!window.__aa) document.documentElement.classList.remove('js'); }, 6000);
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;600;700&family=Playfair+Display:wght@700&family=Unbounded:wght@500;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- Suit shapes, reused everywhere -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="s-spade" viewBox="0 0 100 120"><path fill="currentColor" d="M50 5C50 5 95 45 95 70c0 18-15 26-27 26-8 0-14-4-16-10 1 14 6 24 14 29H34c8-5 13-15 14-29-2 6-8 10-16 10C20 96 5 88 5 70 5 45 50 5 50 5Z"/></symbol>
+  <symbol id="s-heart" viewBox="0 0 100 120"><path fill="currentColor" d="M50 106C18 78 5 58 5 38 5 22 17 12 30 12c10 0 17 6 20 15 3-9 10-15 20-15 13 0 25 10 25 26 0 20-13 40-45 68Z"/></symbol>
+  <symbol id="s-diamond" viewBox="0 0 100 120"><path fill="currentColor" d="M50 8 90 60 50 112 10 60Z"/></symbol>
+  <symbol id="s-club" viewBox="0 0 100 120"><g fill="currentColor"><circle cx="50" cy="36" r="21"/><circle cx="27" cy="68" r="21"/><circle cx="73" cy="68" r="21"/><path d="M50 62c1 26 6 42 16 50H34c10-8 15-24 16-50Z"/></g></symbol>
+</svg>
+
+<!-- Preloader -->
+<div class="preloader" aria-hidden="true">
+  <div class="pl-deck">
+    <i class="pl-card"></i><i class="pl-card"></i><i class="pl-card"></i><i class="pl-card"></i><i class="pl-card"></i>
+  </div>
+  <div class="pl-meta"><span>Shuffling the deck</span><b class="pl-num">000</b></div>
+</div>
+
+<!-- Overlays -->
+<canvas id="net" aria-hidden="true"></canvas>
+<canvas id="burst" aria-hidden="true"></canvas>
+
+<header class="hud">
+  <a class="logo" href="#top" aria-label="AI Aces, back to top">
+    <span>AI</span><svg viewBox="0 0 100 120" aria-hidden="true"><use href="#s-spade"/></svg><span>ACES</span>
+  </a>
+  <a class="btn btn-gold btn-sm" href="#contact">Deal me in</a>
+  <div class="hud-scene" aria-hidden="true"><b id="hud-n">01</b><span id="hud-name">THE ACE</span></div>
+  <div class="hud-prog" aria-hidden="true"><span>EDGE</span><b id="hud-pct">00%</b><div class="hud-bar"><i></i></div></div>
+</header>
+
+<main id="top">
+
+<!-- ================= THE STORY (pinned stage) ================= -->
+<div id="stage">
+
+  <!-- Scene 1 + 2: the ace, the swipe -->
+  <section class="scene scene-ace" aria-labelledby="h-ace">
+    <div class="hero-copy">
+      <p class="eyebrow">AI consulting · Agents · Automation</p>
+      <h1 id="h-ace" data-split="chars">Your business is holding an <span class="gold">ace.</span></h1>
+      <p class="lede">AI Aces builds the AI agents, automations and team skills that turn it into a winning hand. Stop gambling on AI.</p>
+      <div class="actions">
+        <a class="btn btn-gold" href="#contact">Deal me in</a>
+        <span class="scroll-hint"><i></i>Scroll to play</span>
+      </div>
+    </div>
+
+    <div class="hand-rig" aria-hidden="true">
+      <div class="hand-float">
+        <svg class="hand-part hand-back" viewBox="0 0 420 700">
+          <defs>
+            <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d2a38"/><stop offset="1" stop-color="#0c1219"/></linearGradient>
+          </defs>
+          <g fill="url(#hg)" stroke="#3df0ff" stroke-width="2" stroke-linejoin="round">
+            <rect x="250" y="150" width="118" height="38" rx="19" transform="rotate(-8 250 169)"/>
+            <rect x="250" y="194" width="126" height="38" rx="19" transform="rotate(-4 250 213)"/>
+            <rect x="250" y="238" width="120" height="38" rx="19"/>
+            <rect x="250" y="282" width="104" height="36" rx="18" transform="rotate(5 250 300)"/>
+            <path d="M128 360c-8-60 22-110 72-120l100-4c30 64 22 184 0 284H150c-10-50-16-110-22-160Z"/>
+          </g>
+          <g fill="#3df0ff"><circle cx="352" cy="155" r="3"/><circle cx="360" cy="205" r="3"/><circle cx="356" cy="257" r="3"/><circle cx="340" cy="308" r="3"/></g>
+          <g fill="none" stroke="#3df0ff" stroke-width="1" opacity=".55"><path d="M352 155 360 205 356 257 340 308M200 400l40 40 50-30M240 440v60"/></g>
+          <g fill="#3df0ff"><circle cx="200" cy="400" r="3"/><circle cx="240" cy="440" r="3.5"/><circle cx="290" cy="410" r="3"/></g>
+          <rect x="130" y="508" width="190" height="46" rx="8" fill="#ece6d8" stroke="#bfb8a6" stroke-width="2"/>
+          <circle cx="296" cy="531" r="7" fill="#d9b45a"/>
+          <path d="M118 700 136 552h178l18 148Z" fill="#0b0f14" stroke="#d9b45a" stroke-width="2"/>
+        </svg>
+
+        <i class="ghost card-slot"></i><i class="ghost card-slot"></i><i class="ghost card-slot"></i>
+
+        <div class="ace-card card-slot">
+          <div class="ace-tilt">
+            <div class="ace-inner">
+              <div class="face front">
+                <div class="idx"><b>A</b><svg viewBox="0 0 100 120"><use href="#s-spade"/></svg></div>
+                <svg class="pip" viewBox="0 0 100 120">
+                  <defs><clipPath id="spclip"><path d="M50 5C50 5 95 45 95 70c0 18-15 26-27 26-8 0-14-4-16-10 1 14 6 24 14 29H34c8-5 13-15 14-29-2 6-8 10-16 10C20 96 5 88 5 70 5 45 50 5 50 5Z"/></clipPath></defs>
+                  <use href="#s-spade" style="color:#0d1014"/>
+                  <g clip-path="url(#spclip)" fill="none" stroke="#3df0ff" stroke-width=".9" stroke-linecap="round">
+                    <path d="M50 8v48M50 28 34 44v14M50 28l16 16v14M34 58H12M66 58h22M50 92v24"/>
+                  </g>
+                  <g fill="#3df0ff"><circle cx="50" cy="28" r="2.4"/><circle cx="34" cy="58" r="2.2"/><circle cx="66" cy="58" r="2.2"/><circle cx="50" cy="56" r="2"/><circle cx="16" cy="58" r="1.8"/><circle cx="84" cy="58" r="1.8"/></g>
+                  <text x="50" y="85" text-anchor="middle" font-family="Unbounded, sans-serif" font-weight="800" font-size="18" fill="#f4efe4">AI</text>
+                </svg>
+                <div class="idx br"><b>A</b><svg viewBox="0 0 100 120"><use href="#s-spade"/></svg></div>
+              </div>
+              <div class="face back"><div class="back-art"><svg viewBox="0 0 100 120"><use href="#s-spade"/></svg></div></div>
+            </div>
+          </div>
+        </div>
+
+        <svg class="hand-part hand-front" viewBox="0 0 420 700">
+          <g class="thumb"><g transform="rotate(22 153 460)">
+            <rect x="128" y="290" width="50" height="180" rx="25" fill="url(#hg)" stroke="#3df0ff" stroke-width="2"/>
+            <rect x="138" y="299" width="30" height="34" rx="13" fill="none" stroke="#3df0ff" stroke-width="1" opacity=".6"/>
+            <path d="M153 440V352" stroke="#3df0ff" stroke-width="1" opacity=".55"/>
+            <circle cx="153" cy="440" r="3" fill="#3df0ff"/><circle cx="153" cy="352" r="3" fill="#3df0ff"/>
+          </g></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 3: roulette -->
+  <section class="scene scene-roulette" aria-labelledby="h-rl">
+    <div class="rl-copy">
+      <p class="eyebrow">The house game</p>
+      <div class="rl-heads" id="h-rl">
+        <h2 class="rl-h1" data-split>Most companies <span class="red">spin the wheel</span> on AI.</h2>
+        <h2 class="rl-h2" data-split>We calculate where the ball <span class="gold">lands.</span></h2>
+      </div>
+      <div class="readout" aria-hidden="true">
+        <div class="ro-head"><i></i>AI·ACES // PROBABILITY ENGINE</div>
+        <div class="ro-row"><span>Ball velocity</span><b data-ro="vel">0.0 m/s</b></div>
+        <div class="ro-row"><span>Pockets in play</span><b data-ro="pk">1</b></div>
+        <div class="ro-row"><span>Predicted pocket</span><b data-ro="pred">ACE</b></div>
+        <div class="ro-row"><span>Confidence</span><b data-ro="conf">99.7%</b></div>
+        <div class="ro-bar"><i></i></div>
+        <div class="ro-status" data-ro="status">LOCKED</div>
+      </div>
+    </div>
+
+    <div class="wheel-persp" aria-hidden="true">
+      <div class="wheel-tilt">
+        <svg class="wheel" viewBox="0 0 500 500">
+          <defs>
+            <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5dc9a"/><stop offset=".5" stop-color="#b8892f"/><stop offset="1" stop-color="#f1d388"/></linearGradient>
+            <radialGradient id="cone"><stop offset="0" stop-color="#2a3442"/><stop offset="1" stop-color="#0b0f14"/></radialGradient>
+            <radialGradient id="ballg" cx=".35" cy=".3"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#b9c4cf"/></radialGradient>
+          </defs>
+          <circle cx="250" cy="250" r="248" fill="url(#rim)"/>
+          <circle cx="250" cy="250" r="239" fill="#0a0d11"/>
+          <g class="w-rot">
+            <g class="w-pockets"></g>
+            <g fill="none" stroke="#d9b45a"><circle cx="250" cy="250" r="215" stroke-width="2.5"/><circle cx="250" cy="250" r="165" stroke-width="1"/><circle cx="250" cy="250" r="135" stroke-width="2.5"/></g>
+            <circle cx="250" cy="250" r="133.5" fill="url(#cone)"/>
+            <g stroke="url(#rim)" stroke-width="5" stroke-linecap="round"><path d="M250 142v216M142 250h216"/></g>
+            <g fill="#d9b45a"><circle cx="250" cy="142" r="8"/><circle cx="250" cy="358" r="8"/><circle cx="142" cy="250" r="8"/><circle cx="358" cy="250" r="8"/></g>
+            <circle cx="250" cy="250" r="36" fill="url(#rim)"/>
+            <use href="#s-spade" x="235" y="230" width="30" height="36" style="color:#0d1014"/>
+            <rect class="lock" x="234" y="33" width="32" height="84" rx="3" fill="rgba(61,240,255,.2)" stroke="#3df0ff" stroke-width="1.5"/>
+          </g>
+          <g class="w-hud" fill="none" stroke="#3df0ff">
+            <circle class="reticle" cx="250" cy="250" r="244" stroke-width="1" stroke-dasharray="2 10" opacity=".7"/>
+            <path class="pred-path" pathLength="1" stroke-width="1.5" opacity=".85"/>
+            <g class="pred-x" stroke-width="1.5"><circle cx="379.9" cy="175" r="13"/><path d="M379.9 156v10M379.9 184v10M361 175h10M389 175h10"/></g>
+          </g>
+          <g class="orbit"><circle class="ball" cx="250" cy="100" r="6.5" fill="url(#ballg)"/></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 4: poker -->
+  <section class="scene scene-poker" aria-labelledby="h-pk">
+    <p class="eyebrow">Showdown</p>
+    <h2 id="h-pk" data-split>The house always wins. <span class="gold">Unless you hold this.</span></h2>
+    <div class="hand5" aria-hidden="true"></div>
+    <p class="sr-only">Four aces and an AI wild card.</p>
+    <div class="stamp-wrap"><i class="shock"></i><div class="stamp"><b>Winning hand</b><span>Four aces + AI wild card</span></div></div>
+    <p class="pk-sub">Agents. Efficiency. Scale. Strategy. And AI as the card nobody else at the table is holding.</p>
+  </section>
+</div>
+
+<!-- Ticker -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>AI Agents</span><svg viewBox="0 0 100 120"><use href="#s-spade"/></svg>
+    <span>Workforce efficiency</span><svg class="red" viewBox="0 0 100 120"><use href="#s-heart"/></svg>
+    <span>Scale</span><svg class="red" viewBox="0 0 100 120"><use href="#s-diamond"/></svg>
+    <span>AI Strategy</span><svg viewBox="0 0 100 120"><use href="#s-club"/></svg>
+    <span>AI Agents</span><svg viewBox="0 0 100 120"><use href="#s-spade"/></svg>
+    <span>Workforce efficiency</span><svg class="red" viewBox="0 0 100 120"><use href="#s-heart"/></svg>
+    <span>Scale</span><svg class="red" viewBox="0 0 100 120"><use href="#s-diamond"/></svg>
+    <span>AI Strategy</span><svg viewBox="0 0 100 120"><use href="#s-club"/></svg>
+  </div>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="services" data-scene="THE HAND">
+  <p class="eyebrow" data-scramble>What we deal</p>
+  <h2 data-split>Four aces. <span class="gold">One hand.</span></h2>
+  <p class="sec-lede" data-reveal>Each card is something we do for you. Flip one over.</p>
+
+  <div class="svc-grid">
+    <article class="svc" tabindex="0">
+      <div class="svc-inner">
+        <div class="face front">
+          <div class="idx"><b>A</b><svg viewBox="0 0 100 120"><use href="#s-spade"/></svg></div>
+          <svg class="pip" viewBox="0 0 100 120"><use href="#s-spade"/></svg>
+          <div class="svc-title">AI Agents</div>
+          <div class="idx br"><b>A</b><svg viewBox="0 0 100 120"><use href="#s-spade"/></svg></div>
+        </div>
+        <div class="face back svc-back">
+          <span class="svc-no">01 / Spades</span>
+          <h3>AI Agents</h3>
+          <p>Custom agents that take real work off your plate, end to end.</p>
+          <ul><li>Customer and sales agents</li><li>Internal operations copilots</li><li>Wired into the tools you already use</li></ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="svc" tabindex="0">
+      <div class="svc-inner">
+        <div class="face front red">
+          <div class="idx"><b>A</b><svg viewBox="0 0 100 120"><use href="#s-heart"/></svg></div>
+          <svg class="pip" viewBox="0 0 100 120"><use href="#s-heart"/></svg>
+          <div class="svc-title">Workforce efficiency</div>
+          <div class="idx br"><b>A</b><svg viewBox="0 0 100 120"><use href="#s-heart"/></svg></div>
+        </div>
+        <div class="face back svc-back">
+          <span class="svc-no">02 / Hearts</span>
+          <h3>Workforce efficiency</h3>
+          <p>Hands-on training and AI workflows that give every person on your team hours back.</p>
+          <ul><li>Team AI training</li><li>Prompt and workflow playbooks</li><li>Role-specific copilots</li></ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="svc" tabindex="0">
+      <div class="svc-inner">
+        <div class="face front red">
+          <div class="idx"><b>A</b><svg viewBox="0 0 100 120"><use href="#s-diamond"/></svg></div>
+          <svg class="pip" viewBox="0 0 100 120"><use href="#s-diamond"/></svg>
+          <div class="svc-title">Scale</div>
+          <div class="idx br"><b>A</b><svg viewBox="0 0 100 120"><use href="#s-diamond"/></svg></div>
+        </div>
+        <div class="face back svc-back">
+          <span class="svc-no">03 / Diamonds</span>
+          <h3>Scale</h3>
+          <p>Automation that lets revenue grow without headcount growing at the same pace.</p>
+          <ul><li>Process automation</li><li>Lead and pipeline automation</li><li>Reporting on autopilot</li></ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="svc" tabindex="0">
+      <div class="svc-inner">
+        <div class="face front">
+          <div class="idx"><b>A</b><svg viewBox="0 0 100 120"><use href="#s-club"/></svg></div>
+          <svg class="pip" viewBox="0 0 100 120"><use href="#s-club"/></svg>
+          <div class="svc-title">AI Strategy</div>
+          <div class="idx br"><b>A</b><svg viewBox="0 0 100 120"><use href="#s-club"/></svg></div>
+        </div>
+        <div class="face back svc-back">
+          <span class="svc-no">04 / Clubs</span>
+          <h3>AI Strategy</h3>
+          <p>A clear roadmap: what to build first, what to buy, and what to skip.</p>
+          <ul><li>AI readiness audit</li><li>Use-case prioritisation</li><li>Build-versus-buy guidance</li></ul>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="process" id="process" data-scene="THE PLAY">
+  <div class="process-head">
+    <p class="eyebrow" data-scramble>How we play</p>
+    <h2 data-split>No bluffing. <span class="gold">Four moves.</span></h2>
+  </div>
+  <div class="track">
+    <article class="step"><span class="step-n">01</span><h3>Read the table</h3><b>Audit</b><p>We map your workflows, data and tools, and find where AI pays off first. And where it won't.</p></article>
+    <article class="step"><span class="step-n">02</span><h3>Stack the deck</h3><b>Design</b><p>We design the agents, automations and guardrails around your team, not around a demo.</p></article>
+    <article class="step"><span class="step-n">03</span><h3>Play the hand</h3><b>Build</b><p>We build, integrate and ship into the tools your people already use. Working software, not slideware.</p></article>
+    <article class="step"><span class="step-n">04</span><h3>Cash out</h3><b>Scale</b><p>We train your team, measure the gains, and roll what works across the business.</p></article>
+    <i class="track-end"></i>
+  </div>
+  <div class="pline" aria-hidden="true"><i></i><span class="pchip"></span></div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact" data-scene="THE CALL">
+  <p class="eyebrow" data-scramble>Your move</p>
+  <h2 class="mega" data-split="chars">Deal me <span class="gold">in.</span></h2>
+  <div class="contact-grid">
+    <div data-reveal>
+      <p class="sec-lede">Tell us what your business does and where the hours go. We'll come back with the first hand we'd play.</p>
+      <a class="mail" data-email href="mailto:hello@example.com">hello@example.com</a>
+    </div>
+    <form class="form" data-reveal>
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>Company<input name="company" autocomplete="organization"></label>
+      <label class="full">What should AI take off your plate?<textarea name="message" rows="3" required></textarea></label>
+      <button class="btn btn-gold magnetic" type="submit">Deal me in <svg viewBox="0 0 100 120" aria-hidden="true"><use href="#s-spade"/></svg></button>
+      <p class="form-note">Opens your email app with the message filled in.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <a class="logo" href="#top"><span>AI</span><svg viewBox="0 0 100 120" aria-hidden="true"><use href="#s-spade"/></svg><span>ACES</span></a>
+  <nav><a data-link="linkedin" href="#">LinkedIn</a><a data-link="instagram" href="#">Instagram</a><a data-link="x" href="#">X</a></nav>
+  <p>The casino is a metaphor. We don't gamble with your business. © <span id="yr">2026</span> AI Aces.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
